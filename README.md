@@ -57,7 +57,7 @@ project/
 ### 3. logistic_regression.ipynb
 - Linear baseline, class weighting vs SMOTE, CV hyperparameter tuning.
 
-### 4. Random Forest notebooks
+### 4. final_random_forest.ipynb
 - Baseline RF, alternative versions, final tuned RF with engineered features.
 
 ### 5. neural_network.ipynb
