@@ -1,47 +1,91 @@
 # Credit Card Approval Prediction
-## Project Description
-This project aims to predict the likelihood of a credit card application being approved based on applicant data. By analyzing various demographic and financial features, we can build a model to help financial institutions improve the accuracy of their credit approval decisions.
 
-The primary goal is to explore, train, and compare three different machine learning models:
-1. K-Nearest Neighbors (KNN)
+This repository implements a full end-to-end machine learning pipeline to predict **creditworthiness** using demographic features and credit behaviour data from the Kaggle Credit Approval Dataset.  
+Because the raw dataset does **not** provide an explicit approval/decline label, we construct a behaviour-driven target from delinquency history and evaluate several model classes under severe class imbalance.
 
-2. Random Forest
+Our goal is to compare **linear**, **tree-based**, and **neural network** approaches and identify which modelling family best detects high-risk clients while minimising costly false negatives.
 
-3. Neural Network (NN)
+---
 
-We will evaluate these models based on performance metrics like Accuracy, Precision, Recall, and F1-score to determine the most effective approach for this dataset, paying close attention to the significant class imbalance.
+## 📁 Repository Layout
 
-## Dataset
-The dataset is sourced from the "Credit Card Approval Prediction" dataset found on Kaggle. It consists of two main files: 
-1. `application_record.csv` that contains applicant demographic, income, and other personal information.
-2. `credit_record.csv` that contains historical monthly credit status data for applicants.
-
-A key part of the project involves cleaning, merging, and engineering these two datasets to create a unified dataset (clean_merged.csv) with a suitable target variable (label) derived from the applicant's payment history.
-
-## Project Structure
-```plaintext
-.
+project/
 │
-├── .gitignore          # Specifies files and folders for Git to ignore
-├── README.md           # This file, explaining the project
-├── requirements.txt    # A list of all Python package dependencies
+├── README.md                  # You are here
+├── requirements.txt           # Python dependencies
 │
-├── data/
-│   ├── application_record.csv  # Raw applicant data
-│   ├── credit_record.csv       # Raw credit history data
-│   ├── clean_merged.csv        # The final, cleaned dataset (output of data_cleaning.ipynb)
-│   └── to be updated
+├── data/                      # Raw + cleaned + processed datasets
+│   ├── application_record.csv
+│   ├── credit_record.csv
+│   ├── clean_merged.csv
+│   ├── X_train.csv, y_train.csv
+│   ├── X_test.csv, y_test.csv
+│   ├── X_train_processed.csv, X_test_processed.csv
+│   ├── X_train_smote.csv, y_train_smote.csv
+│   └── …
 │
-├── drafts/
-│   └── (Notebooks and scripts for experimentation, ignored by .gitignore)
+├── src/                       # Notebooks for each pipeline stage
+│   ├── data_cleaning.ipynb
+│   ├── data_processing.ipynb
+│   ├── logistic_regression.ipynb
+│   ├── random_forest.ipynb
+│   ├── Random_forest_Vivian.ipynb
+│   ├── final_random_forest.ipynb
+│   └── neural_network.ipynb
 │
-├── src/
-│   ├── data_cleaning.ipynb     # Notebook for all cleaning, merging, and EDA
-│   ├── data_processing.ipynb   # Notebook for processing and handling data imbalance
-│   ├── knn_model.ipynb         # Notebook for KNN modeling
-│   ├── random_forest_model.ipynb # Notebook for Random Forest modeling
-│   └── neural_network_model.ipynb # Notebook for NN modeling
-│
-└── models/
-    └── (Saved model files, e.g., .pkl or .h5, can be saved here)
-```
+└── venv/                      # Optional local virtual environment
+
+---
+
+## 📊 Data Files (`data/`)
+
+- **application_record.csv** — Raw applicant information.
+- **credit_record.csv** — Monthly credit behaviour.
+- **clean_merged.csv** — Final cleaned dataset with engineered features + behaviour-derived target.
+- **Train/test splits** — Stratified 80/20 split.
+- **Processed features** — After scaling + encoding.
+- **SMOTE-balanced data** — For models requiring balanced inputs.
+
+---
+
+## 📒 Notebooks (`src/`)
+
+### 1. data_cleaning.ipynb
+- Cleans raw files, resolves duplicates, constructs engineered features and behaviour-based labels.
+
+### 2. data_processing.ipynb
+- Additional feature engineering, preprocessing, scaling, encoding, SMOTE, and export.
+
+### 3. logistic_regression.ipynb
+- Linear baseline, class weighting vs SMOTE, CV hyperparameter tuning.
+
+### 4. Random Forest notebooks
+- Baseline RF, alternative versions, final tuned RF with engineered features.
+
+### 5. neural_network.ipynb
+- Feedforward MLP with BatchNorm, Dropout, SMOTE-based training, scheduler, and ROC-AUC optimisation.
+
+---
+
+## 🔁 Typical Workflow
+
+1. Create environment (optional)
+   python -m venv venv  
+   source venv/bin/activate  
+   venv\Scripts\activate (Windows)
+
+2. Install dependencies  
+   pip install -r requirements.txt
+
+3. Run notebooks in order:  
+   data_cleaning → data_processing → the modelling notebooks.
+
+4. Ensure working directory is project root for correct relative paths.
+
+---
+
+## 📝 Notes
+
+- Kaggle raw data is large; keep out of version control.
+- Add a models/ folder if saving model artefacts.
+- Severe class imbalance (~98% good clients) requires cost-sensitive evaluation and threshold tuning.
