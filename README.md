@@ -58,7 +58,7 @@ project/
 - Linear baseline, class weighting vs SMOTE, CV hyperparameter tuning.
 
 ### 4. final_random_forest.ipynb
-- Baseline RF, alternative versions, final tuned RF with engineered features.
+- Baseline RF, alternative versions, baseline XGBoost, tuned XGBoost with engineered features.
 
 ### 5. neural_network.ipynb
 - Feedforward MLP with BatchNorm, Dropout, SMOTE-based training, scheduler, and ROC-AUC optimisation.
