@@ -7,7 +7,7 @@ Our goal is to compare **linear**, **tree-based**, and **neural network** approa
 
 ---
 
-## 📁 Repository Layout
+## Repository Layout
 
 project/
 │
@@ -28,16 +28,14 @@ project/
 │   ├── data_cleaning.ipynb
 │   ├── data_processing.ipynb
 │   ├── logistic_regression.ipynb
-│   ├── random_forest.ipynb
-│   ├── Random_forest_Vivian.ipynb
 │   ├── final_random_forest.ipynb
 │   └── neural_network.ipynb
 │
-└── venv/                      # Optional local virtual environment
+└── venv/                      # local virtual environment
 
 ---
 
-## 📊 Data Files (`data/`)
+## Data Files (`data/`)
 
 - **application_record.csv** — Raw applicant information.
 - **credit_record.csv** — Monthly credit behaviour.
@@ -48,7 +46,7 @@ project/
 
 ---
 
-## 📒 Notebooks (`src/`)
+## Notebooks (`src/`)
 
 ### 1. data_cleaning.ipynb
 - Cleans raw files, resolves duplicates, constructs engineered features and behaviour-based labels.
@@ -67,9 +65,9 @@ project/
 
 ---
 
-## 🔁 Typical Workflow
+## Typical Workflow
 
-1. Create environment (optional)
+1. Create environment 
    python -m venv venv  
    source venv/bin/activate  
    venv\Scripts\activate (Windows)
@@ -84,7 +82,7 @@ project/
 
 ---
 
-## 📝 Notes
+## Notes
 
 - Kaggle raw data is large; keep out of version control.
 - Add a models/ folder if saving model artefacts.
