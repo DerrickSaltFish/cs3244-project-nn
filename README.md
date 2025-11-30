@@ -9,6 +9,7 @@ Our goal is to compare **linear**, **tree-based**, and **neural network** approa
 
 ## Repository Layout
 
+```
 project/
 │
 ├── README.md                  # You are here
@@ -32,8 +33,7 @@ project/
 │   └── neural_network.ipynb
 │
 └── venv/                      # local virtual environment
-
----
+```
 
 ## Data Files (`data/`)
 
