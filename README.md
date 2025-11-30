@@ -12,7 +12,7 @@ Our goal is to compare **linear**, **tree-based**, and **neural network** approa
 ```
 project/
 │
-├── README.md                  # You are here
+├── README.md                  
 ├── requirements.txt           # Python dependencies
 │
 ├── data/                      # Raw + cleaned + processed datasets
